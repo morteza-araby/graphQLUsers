@@ -119,7 +119,7 @@ mutation {
 	}
 }
 ```
-### using deleteUser
+### Using deleteUser
 
 ```bash
 mutation {
@@ -129,9 +129,7 @@ mutation {
 }
 ```
 
-### Put request will completely replace the current record (override). Patch Request will only
-### overwrite the property that is inclueds in request
-
+### Using editUser to overwrite an property
 
 ```bash
 	mutation {
