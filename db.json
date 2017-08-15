@@ -9,13 +9,13 @@
     {
       "id": "40",
       "firstName": "Samantha",
-      "age": "21",
+      "age": 21,
       "companyId": "2"
     },
     {
       "id": "41",
       "firstName": "Alex",
-      "age": "21",
+      "age": 24,
       "companyId": "2"
     }
   ],
