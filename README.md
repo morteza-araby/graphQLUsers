@@ -1,4 +1,4 @@
-#How to start
+# How to start
 
 1- Clone the code git@github.com:morteza-araby/graphQLUsers.git
 
@@ -16,8 +16,8 @@
 
 
 
-### Some queries
-# To get an specific company and users who work at that company:
+## Some queries
+### To get an specific company and users who work at that company:
 
 ```bash
 {
@@ -30,7 +30,7 @@
   }
 }
 ```
-# To get a user first name, age and company information 
+### To get a user first name, age and company information 
 ```bash
 {
   user(id:"40"){
@@ -43,8 +43,8 @@
   }
 }
 ```
-# We can nest the query data, for example ask for company and users and inside users ask for company, and inside company again
-# ask for users
+### We can nest the query data, for example ask for company and users and inside users ask for company, and inside company again
+### ask for users
 ```bash
 {
   company(id:"2"){
@@ -62,7 +62,7 @@
   }
 }
 ```
-## We can name the query
+### We can name the query
 ```bash
 query findCompany {
 	company(id:"2"){
@@ -74,8 +74,8 @@ query findCompany {
   }
 }
 ```
-## We can ask several query with same root query, we just have to assign the different key 
-## to queries
+### We can ask several query with same root query, we just have to assign the different key 
+### to queries
 ```bash
 {
 	apple: company(id:"1"){
@@ -86,5 +86,59 @@ query findCompany {
     description,
     name
   }
+}
+```
+
+### query fragment, a list of different properties that we want to access as a fragment can reduce
+### the repetetive code.
+```bash
+{
+	apple: company(id:"1"){
+    ...companyDetails
+  }
+  google: company(id:"2"){
+	  ...companyDetails
+  }
+}
+
+fragment companyDetails on Company {
+	id
+	name
+	description
+}
+
+```
+## Mutation
+### Calling addUser to add a new user to db
+```bash
+mutation {
+	addUser(firstName: "John", age: 33){
+		id
+		firstName
+		age
+	}
+}
+```
+### using deleteUser
+
+```bash
+mutation {
+	deleteUser(id: "Syl1SEe_W") {
+		id
+	}
+}
+```
+
+### Put request will completely replace the current record (override). Patch Request will only
+### overwrite the property that is inclueds in request
+
+
+```bash
+	mutation {
+	editUser(id: "40", age: 10) {
+		id
+		firstName
+		age
+	}
 }
 ```
